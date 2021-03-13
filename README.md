@@ -12,10 +12,10 @@ Keep in mind that not all airports reports METAR or TAF. If you search for an ai
 
 ## Overview
 
-![home](https://github.com/j04kh/avweather/blob/master/src/assets/images/screenshots/home.png?raw=true)
-![details](https://github.com/j04kh/avweather/blob/master/src/assets/images/screenshots/details.png?raw=true)
-![nearby](https://github.com/j04kh/avweather/blob/master/src/assets/images/screenshots/nearby.png?raw=true)
-![map](https://github.com/j04kh/avweather/blob/master/src/assets/images/screenshots/map.png?raw=true)
+![home](src/assets/images/screenshots/home.png?raw=true)
+![details](src/assets/images/screenshots/details.png?raw=true)
+![nearby](src/assets/images/screenshots/nearby.png?raw=true)
+![map](src/assets/images/screenshots/map.png?raw=true)
 
 ### Built With
 
