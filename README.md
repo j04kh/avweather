@@ -27,6 +27,7 @@ You can view the airport location on Maps by taping on the upper right maps icon
 You can see a list of nearby airports taping on the button 'Nearby Airports'.
 
 ## How To Use
+You can view a live demo [here](https://j04kh.github.io/avweather/).
 To clone and run this application locally, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 ```bash
