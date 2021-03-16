@@ -25,6 +25,7 @@ input {
   text-align: center;
   width: 80%;
   color: #232831;
+  margin-left: 10px;
 }
 
 button {
@@ -168,7 +169,7 @@ iframe {
 }
 
 .data-font {
-  font-family: 'RobotoMono', sans-serif;
+  font-family: "RobotoMono", sans-serif;
 }
 
 .link {
@@ -267,20 +268,38 @@ iframe {
   color: red;
 }
 
+/* Mobile */
 @media (max-height: 700px) {
   .container {
     height: 120px;
     overflow-y: scroll;
   }
+  body {
+    font-size: 0.9rem;
+  }
+  input {
+    margin-left: 20px;
+  }
+  .condition {
+    font-size: 0.7rem;
+  }
 }
 
+/* Small devices */
 @media (max-height: 600px) {
   .container {
     height: 110px;
     overflow-y: scroll;
   }
+  body {
+    font-size: 0.8rem;
+  }
+  input {
+    margin-left: 20px;
+  }
 }
 
+/* Desktop */
 @media (min-width: 500px) {
   .home {
     width: 500px;
@@ -291,6 +310,9 @@ iframe {
   }
   .nearby {
     bottom: 10%;
+  }
+  input {
+    margin-left: 20px;
   }
   .map {
     width: 100%;
