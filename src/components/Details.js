@@ -17,7 +17,7 @@ const Details = () => {
 	const [metarData, setMetarData] = useState({});
 	const [tafData, setTafData] = useState({});
 	const [condition, setCondition] = useState('vmc');
-	const [fetching, setFetching] = useState({metar:true, taf:true, info:true});
+	const [loading, setLoading] = useState({metar:true, taf:true, info:true});
 
 	let history = useHistory();
 
@@ -42,7 +42,6 @@ const Details = () => {
 					elev_m: json.elevation_m
 				};
 				setStationData(newStationData);
-				setFetching({info: false});
 			})
 			.catch(error => console.log('Station fetch error: ' + error));
 	};
@@ -66,7 +65,7 @@ const Details = () => {
 					since: sincePublished
 				};
 				setMetarData(newMetarData);
-				setFetching({metar: false});
+				setLoading(false);
 			})
 			.catch(error => console.log('METAR fetch error: ' + error));
 	};
@@ -84,7 +83,6 @@ const Details = () => {
 					raw: json.raw
 				};
 				setTafData(newTafData);
-				setFetching({taf: false});
 			})
 			.catch(error => console.log('TAF fetch error: ' + error));
 	};
@@ -143,12 +141,15 @@ const Details = () => {
 		const now = new Date();
 		const toLocal = parseInt(offset/60);
 		const daypublished = parseInt(data.raw.slice(5,7));
-		const publishedHr = (parseInt(data.raw.slice(7,9))-toLocal)%12;
+		let publishedHr = (parseInt(data.raw.slice(7,9))-toLocal);
+		if (publishedHr < 0){
+			publishedHr = publishedHr%12;
+		}
 		const publishedMin = parseInt(data.raw.slice(9,11));
 		const published = new Date(now.getFullYear(), now.getMonth(), daypublished, publishedHr, publishedMin, 0, 0);
 
 		const res = timeSince(published);
-
+		
 		if (res.includes('minutes')){
 			return (`${res} ago`);
 		} else {
@@ -167,19 +168,23 @@ const Details = () => {
 	}
 	
 	const windInfo = () => {
-		if (metarData.wind_speed === 0){
-			return (`Wind calm`);
-		} else {
-			return (`${metarData.wind_speed} kts ${metarData.wind_direction}º`)
+		const direction = metarData.wind_direction === null ? 'variable' : `${metarData.wind_direction}º`
+		const speed = metarData.wind_speed === 0 ? 'Wind calm' : `${metarData.wind_speed} kts `;
+		
+		if (speed === 'Wind Calm'){
+			return speed;
+		}
+		else{
+			return speed + direction;
 		}
 	}
 
-	useEffect(() => getStationData(), []); // eslint-disable-line react-hooks/exhaustive-deps
 	useEffect(() => getMetarData(), []); // eslint-disable-line react-hooks/exhaustive-deps
+	useEffect(() => getStationData(), []); // eslint-disable-line react-hooks/exhaustive-deps
 	useEffect(() => getTafData(), []); // eslint-disable-line react-hooks/exhaustive-deps
 
 
-	if (fetching.info && fetching.metar && fetching.taf){
+	if (loading){
 		return(
 			<div className='main'>
 				<div className='home justify-center items-center small'>
@@ -212,7 +217,7 @@ const Details = () => {
 							<p className='text'> {windInfo()}</p>
 							<p className={`text condition ${condition}`}>{metarData.flight_rules}</p>
 						</div>
-					</div> {/* fin container fila arriba */}
+					</div> 
 
 					<p className='text right data-font'>
 						{metarData.raw}
@@ -220,7 +225,8 @@ const Details = () => {
 					<div className='flex-row justify-end right'>
 						<p className={`time-ago bottom ${metarData.since}`}>{metarData.since}</p>
 					</div>
-				</div>	{/* fin container METAR */}
+				</div>	
+				
 				<div className='container big self-center overflow-scroll' >	{/* container TAF */}
 					<div className='flex-row right' >
 						<p className='text bold'>TAF</p>

@@ -31,9 +31,6 @@ input{
   text-align: center;
   width: 80%;
   color: $primary-color;
-  &::placeholder{
-    font-size: 11px;
-  }
 }
 
 button{
@@ -101,7 +98,7 @@ iframe{
 
 .search{
   background-color: $grey;
-  height: 35px;
+  height: 36px;
   width: 210px;
   border-radius: 20px 20px 20px 20px;
   display: flex;

@@ -27,22 +27,6 @@ input {
   color: #232831;
 }
 
-input::-webkit-input-placeholder {
-  font-size: 11px;
-}
-
-input:-ms-input-placeholder {
-  font-size: 11px;
-}
-
-input::-ms-input-placeholder {
-  font-size: 11px;
-}
-
-input::placeholder {
-  font-size: 11px;
-}
-
 button {
   background: transparent;
   outline: none;
@@ -129,7 +113,7 @@ iframe {
 
 .search {
   background-color: #c3c7d0;
-  height: 35px;
+  height: 36px;
   width: 210px;
   border-radius: 20px 20px 20px 20px;
   display: -webkit-box;

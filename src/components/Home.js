@@ -40,7 +40,7 @@ const Home = () => {
 			<img src={Logo} alt='logo' />
 			<h1>AvWeather</h1>
 			<form className='search ' onChange={e => setSearch(e.target.value)} onSubmit={e => searchStation(e)}>
-				<input type='text' placeholder='Airport ICAO code...' value={search} />
+				<input type='text' placeholder='ICAO...' value={search} />
 				<button className='material-icon' type='submit'>
 					<SearchIcon className='material-icon primary'/>
 				</button>
