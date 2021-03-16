@@ -171,11 +171,20 @@ const Details = () => {
 		const direction = metarData.wind_direction === null ? 'variable' : `${metarData.wind_direction}º`
 		const speed = metarData.wind_speed === 0 ? 'Wind calm' : `${metarData.wind_speed} kts `;
 		
-		if (speed === 'Wind Calm'){
+		if (speed === 'Wind calm'){
 			return speed;
 		}
 		else{
 			return speed + direction;
+		}
+	}
+
+	const showConditions = () => {
+		if (metarData.flight_rules.includes('VFR')){
+			return 'VMC';
+		}
+		else {
+			return 'IMC';
 		}
 	}
 
@@ -215,7 +224,7 @@ const Details = () => {
 						<p className='text bold'>METAR</p>
 						<div className='flex-row'>
 							<p className='text'> {windInfo()}</p>
-							<p className={`text condition ${condition}`}>{metarData.flight_rules}</p>
+							<p className={`text condition ${condition}`}>{showConditions()}</p>
 						</div>
 					</div> 
 
