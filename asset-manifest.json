@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/avweather/static/css/main.664597c7.chunk.css",
-    "main.js": "/avweather/static/js/main.43d54d90.chunk.js",
-    "main.js.map": "/avweather/static/js/main.43d54d90.chunk.js.map",
+    "main.js": "/avweather/static/js/main.129e00cf.chunk.js",
+    "main.js.map": "/avweather/static/js/main.129e00cf.chunk.js.map",
     "runtime-main.js": "/avweather/static/js/runtime-main.43917077.js",
     "runtime-main.js.map": "/avweather/static/js/runtime-main.43917077.js.map",
     "static/js/2.6a0848cd.chunk.js": "/avweather/static/js/2.6a0848cd.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.43917077.js",
     "static/js/2.6a0848cd.chunk.js",
     "static/css/main.664597c7.chunk.css",
-    "static/js/main.43d54d90.chunk.js"
+    "static/js/main.129e00cf.chunk.js"
   ]
 }
