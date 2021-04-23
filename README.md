@@ -22,7 +22,7 @@ Keep in mind that not all airports reports METAR or TAF. If you search for an ai
 
 ## Features
 
-* Search airports by ICAO code, check METAR, TAF and Aiport info. 
+* Search airports by ICAO code, check METAR, TAF and Airport info. 
 * View the airport location on Maps by taping on the upper right maps icon.
 * See a list of nearby airports taping on the button 'Find Nearby'.
 
