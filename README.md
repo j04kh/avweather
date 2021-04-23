@@ -2,11 +2,11 @@
 
 ## About the project
 
-Aeronautical Weather application built using React and SASS. Search airports by ICAO code and get METAR (METeorological Aerodrome Report), TAF (Terminal Aerodrome Forecasts) and the aiport information.
-This app uses: an API from [AVWX](https://avwx.rest/) to fetch the data (METAR, TAF and Airport info) and the Google Maps API to display the airport location on Maps.
+Aeronautical Weather application built using React and SASS. Search airports by ICAO code and get METAR (METeorological Aerodrome Report), TAF (Terminal Aerodrome Forecasts) and the airport information.
+This app uses: a REST API from [AVWX](https://avwx.rest/) to fetch the data (METAR, TAF and Airport info) and the Google Maps API to display the airport location on Maps.
 
 If you are not familiar with ICAO codes, you can google the ICAO code of your local Aiport, or try with some examples: `KLAX` (Los Angeles Intl), `KMIA` (Miami Intl), `SUMU` (Carrasco Airport Montevideo). 
-Keep in mind that not all airports reports METAR or TAF. If you search for an airport that is not reporting, you will see an error message on the homepage of the app.
+Keep in mind that not all airports reports METAR or TAF. If you search for an airport that does not report the information, you will see an error message on the homepage of the app.
 
 ## Overview
 
@@ -22,9 +22,9 @@ Keep in mind that not all airports reports METAR or TAF. If you search for an ai
 
 ## Features
 
-* Search airports by ICAO code, you can check METAR, TAF and Aiport info. 
+* Search airports by ICAO code, check METAR, TAF and Aiport info. 
 * View the airport location on Maps by taping on the upper right maps icon.
-* See a list of nearby airports taping on the button 'Nearby Airports'.
+* See a list of nearby airports taping on the button 'Find Nearby'.
 
 ## How To Use
 You can view a live demo [here](https://j04kh.github.io/avweather/).
