@@ -177,6 +177,29 @@ iframe{
 .time-ago{
   font-size: 0.8rem;
   color: $green;
+  text-align: end;
+  margin-bottom: 0px;
+  height: 100%;
+}
+
+.time-ago-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  justify-content: flex-end;
+  top: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.container-metar{
+  background-color: $container-bg;
+  height: auto;
+  max-height: 140px;
+  width: 95%;
+  margin-top: 5%;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .text-center{
