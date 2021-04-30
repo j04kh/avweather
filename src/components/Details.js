@@ -101,6 +101,22 @@ const Details = () => {
 		);
 	};
 
+	const roundCoordLat = (coord) => {
+		let res = coord;
+		res = Math.floor(res * 100) / 100;
+		if (res < 0){
+			return (`S ${Math.abs(res.toFixed(2))}`)
+		} else return (`N ${Math.abs(res.toFixed(2))}`); 
+	}
+
+	const roundCoordLong = (coord) => {
+		let res = coord;
+		res = Math.floor(res * 100) / 100;
+		if (res < 0){
+			return (`W ${Math.abs(res.toFixed(2))}`)
+		} else return (`E ${Math.abs(res.toFixed(2))}`); 
+	}
+
 	const roundCoord = (coord) => {
 		let res = coord;
 		res = Math.floor(res * 100) / 100;
@@ -231,8 +247,8 @@ const Details = () => {
 					<p className='text right data-font'>
 						{metarData.raw}
 					</p>
-					<div className='flex-row justify-end right'>
-						<p className={`time-ago bottom ${metarData.since}`}>{metarData.since}</p>
+					<div className='time-ago-container'>
+						<p className={`time-ago right ${metarData.since}`}>{metarData.since}</p>
 					</div>
 				</div>	
 				
@@ -250,7 +266,7 @@ const Details = () => {
 						<p className='text bold'>Airport Info</p>
 					</div> 
 					<div className='flex-col'>
-						<p className='text left small'><span className='bold'>Coordinates: </span><span className='text small left data-font'> {roundCoord(stationData.lat)} {roundCoord(stationData.lon)}</span> </p>
+						<p className='text left small'><span className='bold'>Coordinates: </span><span className='text small left data-font'> {roundCoordLat(stationData.lat)} {roundCoordLong(stationData.lon)}</span> </p>
 						<p className='text left small'><span className='bold'>Elevation: </span> <span className='text small left data-font'> {stationData.elev_ft}ft / {stationData.elev_m}m</span> </p>
 						{stationData.runways && getRunwaysList()}
 					</div>
