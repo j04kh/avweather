@@ -1,12 +1,11 @@
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Home from './components/Home';
-import ShowInMaps from './components/ShowInMaps';
-import Details from './components/Details';
-import Nearby from './components/Nearby';
-import './assets/styles/App.scss';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./components/Home/index";
+import ShowInMaps from "./components/Maps/index";
+import Details from "./components/Details/index";
+import Nearby from "./components/Nearby/index";
+import "./assets/styles/App.css";
 
 function App() {
-
   return (
     <Router>
       <Switch>
