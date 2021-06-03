@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/avweather/static/css/main.cc9d2011.chunk.css",
-    "main.js": "/avweather/static/js/main.a8520a65.chunk.js",
-    "main.js.map": "/avweather/static/js/main.a8520a65.chunk.js.map",
+    "main.css": "/avweather/static/css/main.ca9f3c2d.chunk.css",
+    "main.js": "/avweather/static/js/main.299fffe7.chunk.js",
+    "main.js.map": "/avweather/static/js/main.299fffe7.chunk.js.map",
     "runtime-main.js": "/avweather/static/js/runtime-main.43917077.js",
     "runtime-main.js.map": "/avweather/static/js/runtime-main.43917077.js.map",
-    "static/js/2.6a0848cd.chunk.js": "/avweather/static/js/2.6a0848cd.chunk.js",
-    "static/js/2.6a0848cd.chunk.js.map": "/avweather/static/js/2.6a0848cd.chunk.js.map",
+    "static/js/2.d6ea02f9.chunk.js": "/avweather/static/js/2.d6ea02f9.chunk.js",
+    "static/js/2.d6ea02f9.chunk.js.map": "/avweather/static/js/2.d6ea02f9.chunk.js.map",
     "index.html": "/avweather/index.html",
-    "static/css/main.cc9d2011.chunk.css.map": "/avweather/static/css/main.cc9d2011.chunk.css.map",
-    "static/js/2.6a0848cd.chunk.js.LICENSE.txt": "/avweather/static/js/2.6a0848cd.chunk.js.LICENSE.txt",
-    "static/media/App.scss": "/avweather/static/media/RobotoMono-VariableFont_wght.2ccde177.ttf",
+    "static/css/main.ca9f3c2d.chunk.css.map": "/avweather/static/css/main.ca9f3c2d.chunk.css.map",
+    "static/js/2.d6ea02f9.chunk.js.LICENSE.txt": "/avweather/static/js/2.d6ea02f9.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/avweather/static/media/RobotoMono-VariableFont_wght.2ccde177.ttf",
     "static/media/logo.19da3b99.png": "/avweather/static/media/logo.19da3b99.png"
   },
   "entrypoints": [
     "static/js/runtime-main.43917077.js",
-    "static/js/2.6a0848cd.chunk.js",
-    "static/css/main.cc9d2011.chunk.css",
-    "static/js/main.a8520a65.chunk.js"
+    "static/js/2.d6ea02f9.chunk.js",
+    "static/css/main.ca9f3c2d.chunk.css",
+    "static/js/main.299fffe7.chunk.js"
   ]
 }
