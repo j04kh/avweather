@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 const NavBar = (props) => {
   let history = useHistory();
 
-  //When NavBar is used on Nearby or Maps nearby prop is passed
+  //When NavBar is used on Nearby or Maps, nearby prop is passed
   const isForNearby = props.nearby;
 
   return (

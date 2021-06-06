@@ -6,9 +6,10 @@ import { useHistory } from "react-router-dom";
 import { Container, SearchForm, SearchButton, ErrorMsg } from "./styles";
 
 const Home = () => {
+  let history = useHistory();
+
   const [search, setSearch] = useState("");
   const [resStatus, setResStatus] = useState("OK");
-  let history = useHistory();
 
   const URL = `https://avwx.rest/api/station/${search}?&format=json`;
   const token = `${process.env.REACT_APP_TOKEN}`;

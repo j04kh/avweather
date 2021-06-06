@@ -9,7 +9,7 @@ const ShowInMaps = (props) => {
   const mapsKey = `${process.env.REACT_APP_MAPS_KEY}`;
   const mapUrl = `https://www.google.com/maps/embed/v1/view?
 										center=${coords}&
-										zoom=13&
+										zoom=14&
 										key=${mapsKey}&
 										maptype=satellite`;
 

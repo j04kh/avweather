@@ -24,67 +24,76 @@ const Details = () => {
   let history = useHistory();
 
   const getStationData = async () => {
-    await fetch(stationUrl, {
-      headers: {
-        Authorization: `TOKEN ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const newStationData = {
-          iata: json.iata,
-          icao: json.icao,
-          lat: json.latitude,
-          lon: json.longitude,
-          name: json.name,
-          country: json.country,
-          runways: json.runways,
-          elev_ft: json.elevation_ft,
-          elev_m: json.elevation_m,
-        };
-        setStationData(newStationData);
-        setInfoLoading(false);
+    try {
+      await fetch(stationUrl, {
+        headers: {
+          Authorization: `TOKEN ${token}`,
+        },
       })
-      .catch((error) => console.log("Station fetch error: " + error));
+        .then((res) => res.json())
+        .then((json) => {
+          const newStationData = {
+            iata: json.iata,
+            icao: json.icao,
+            lat: json.latitude,
+            lon: json.longitude,
+            name: json.name,
+            country: json.country,
+            runways: json.runways,
+            elev_ft: json.elevation_ft,
+            elev_m: json.elevation_m,
+          };
+          setStationData(newStationData);
+          setInfoLoading(false);
+        });
+    } catch (error) {
+      console.error("Station fetch error: " + error);
+    }
   };
 
   const getMetarData = async () => {
-    await fetch(metarUrl, {
-      headers: {
-        Authorization: `TOKEN ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const sincePublished = timeSincePublished(json);
-        const newMetarData = {
-          raw: json.raw,
-          flight_rules: json.flight_rules,
-          wind_direction: json.wind_direction.value,
-          wind_speed: json.wind_speed.value,
-          since: sincePublished,
-        };
-        setMetarData(newMetarData);
-        setMetarLoading(false);
+    try {
+      await fetch(metarUrl, {
+        headers: {
+          Authorization: `TOKEN ${token}`,
+        },
       })
-      .catch((error) => console.log("METAR fetch error: " + error));
+        .then((res) => res.json())
+        .then((json) => {
+          const sincePublished = timeSincePublished(json);
+          const newMetarData = {
+            raw: json.raw,
+            flight_rules: json.flight_rules,
+            wind_direction: json.wind_direction.value,
+            wind_speed: json.wind_speed.value,
+            since: sincePublished,
+          };
+          setMetarData(newMetarData);
+          setMetarLoading(false);
+        });
+    } catch (error) {
+      console.error("METAR fetch error: " + error);
+    }
   };
 
   const getTafData = async () => {
-    await fetch(tafUrl, {
-      headers: {
-        Authorization: `TOKEN ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        const newTafData = {
-          raw: json.raw,
-        };
-        setTafData(newTafData);
-        setTafLoading(false);
+    try {
+      await fetch(tafUrl, {
+        headers: {
+          Authorization: `TOKEN ${token}`,
+        },
       })
-      .catch((error) => console.log("TAF fetch error: " + error));
+        .then((res) => res.json())
+        .then((json) => {
+          const newTafData = {
+            raw: json.raw,
+          };
+          setTafData(newTafData);
+          setTafLoading(false);
+        });
+    } catch (error) {
+      console.error("TAF fetch error: " + error);
+    }
   };
 
   const getRunwaysList = () => {
@@ -106,7 +115,7 @@ const Details = () => {
     );
   };
 
-  const roundCoordLat = (coord) => {
+  const formatCoordLat = (coord) => {
     let res = coord;
     res = Math.floor(res * 100) / 100;
     if (res < 0) {
@@ -114,7 +123,7 @@ const Details = () => {
     } else return `N ${Math.abs(res.toFixed(2))}`;
   };
 
-  const roundCoordLong = (coord) => {
+  const formatCoordLong = (coord) => {
     let res = coord;
     res = Math.floor(res * 100) / 100;
     if (res < 0) {
@@ -177,6 +186,7 @@ const Details = () => {
 
     const res = timeSince(published);
 
+    //METAR reports "expires" after 1 hour
     if (res.includes("minutes")) {
       return `${res} ago`;
     } else {
@@ -184,13 +194,13 @@ const Details = () => {
     }
   };
 
-  const findNearby = () => {
+  const findNearbyAirports = () => {
     const coords =
       roundCoord(stationData.lat) + "," + roundCoord(stationData.lon);
     history.push(`/nearby/${coords}/${stationData.icao}`);
   };
 
-  const seeOnMap = () => {
+  const seeAirportOnMap = () => {
     const coords =
       roundCoord(stationData.lat) + "," + roundCoord(stationData.lon);
     history.push(`/location/${coords}/${stationData.icao}`);
@@ -207,11 +217,11 @@ const Details = () => {
     if (speed === "Wind calm") {
       return speed;
     } else {
-      return speed + direction;
+      return direction + " " + speed;
     }
   };
 
-  const showConditions = () => {
+  const showFlightConditions = () => {
     if (metarData.flight_rules.includes("VFR")) {
       return "VMC";
     } else {
@@ -235,7 +245,7 @@ const Details = () => {
         <NavBar
           iata={stationData.iata}
           icao={stationData.icao}
-          seeOnMap={seeOnMap}
+          seeOnMap={seeAirportOnMap}
         />
 
         <MainWrapper>
@@ -246,7 +256,7 @@ const Details = () => {
 
           <Metar
             windInfo={windInfo()}
-            conditions={showConditions()}
+            conditions={showFlightConditions()}
             raw={metarData.raw}
             timeAgo={metarData.since}
           />
@@ -254,14 +264,14 @@ const Details = () => {
           <Taf raw={tafData.raw} />
 
           <AirportInfo
-            lat={roundCoordLat(stationData.lat)}
-            lon={roundCoordLong(stationData.lon)}
+            lat={formatCoordLat(stationData.lat)}
+            lon={formatCoordLong(stationData.lon)}
             elevFt={stationData.elev_ft}
             elevM={stationData.elev_m}
             getRunwaysList={getRunwaysList}
           />
 
-          <FindNearbyButton onClick={(e) => findNearby(e)}>
+          <FindNearbyButton onClick={(e) => findNearbyAirports(e)}>
             <p>FIND NEARBY</p>
           </FindNearbyButton>
         </MainWrapper>
