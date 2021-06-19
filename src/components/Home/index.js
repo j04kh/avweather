@@ -16,14 +16,14 @@ const Home = () => {
 
   const searchStation = (e) => {
     e.preventDefault();
-    setSearch("");
     fetch(URL, {
       headers: {
         Authorization: `TOKEN ${token}`,
       },
-    }).then((res) =>
-      res.ok ? history.push(`/station/${search}`) : errorHandler()
-    );
+    }).then((res) => {
+      setSearch("");
+      res.ok ? history.push(`/station/${search}`) : errorHandler();
+    });
   };
 
   //Shows error message if airport not found

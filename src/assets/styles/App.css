@@ -72,6 +72,10 @@ iframe {
   color: var(--grey);
 }
 
+.bold {
+  font-weight: 600;
+}
+
 .invisible {
   visibility: hidden;
 }

@@ -43,8 +43,8 @@ export const MainWrapper = styled.div`
 /* Reutilizable container used for metar, taf and airport info */
 export const Container = styled.div`
   background-color: #252e41;
-  height: ${(props) => (props.info === "metar" ? "auto" : "160px")};
-  max-height: ${(props) => (props.info === "metar" ? "140px;" : "auto")};
+  height: auto;
+  max-height: 140px;
   width: 95%;
   margin-top: 5%;
   border-radius: 8px 8px 8px 8px;
@@ -52,8 +52,8 @@ export const Container = styled.div`
   overflow-y: scroll;
   /* small devices */
   @media (max-height: 600px) {
-    height: ${(props) => (props.info === "metar" ? "auto" : "120px")};
-    max-height: ${(props) => (props.info === "metar" ? "110px;" : "auto")};
+    height: auto;
+    max-height: 110px;
     font-size: 0.85rem;
     p {
       font-size: 0.75rem;
@@ -98,7 +98,7 @@ export const RawInfo = styled.p`
   font-family: "RobotoMono", sans-serif;
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
   margin-top: 0;
 `;
 
